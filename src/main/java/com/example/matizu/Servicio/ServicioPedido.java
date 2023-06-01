@@ -5,6 +5,7 @@ import com.example.matizu.Repositorio.RepositorioPedido;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ServicioPedido {
@@ -63,4 +64,13 @@ public class ServicioPedido {
             return "El Pedido no se encuentra registrado";
         }
     }
+
+    public List<Object[]> Buscarpedidousu(String usu){
+        return  repositorio.findPedidousuario(usu);
+    }
+
+    public List<Object[]> Buscarpedidoent(String ent){
+        return  repositorio.findPedidoEntrga(ent);
+    }
+
 }
