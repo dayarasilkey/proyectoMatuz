@@ -65,12 +65,12 @@ public class ServicioPedido {
         }
     }
 
-    public List<Object[]> Buscarpedidousu(String usu){
-        return  repositorio.findPedidousuario(usu);
-    }
+    //public List<Object[]> Buscarpedidousu(String usu){
+    //    return  repositorio.findPedidousuario(usu);
+    //}
 
-    public List<Object[]> Buscarpedidoent(String ent){
-        return  repositorio.findPedidoEntrga(ent);
-    }
+    //public List<Object[]> Buscarpedidoent(String ent){
+     //   return  repositorio.findPedidoEntrga(ent);
+    //}
 
 }
