@@ -20,23 +20,23 @@ public class ControladorProveedor {
     }
 
     @GetMapping ("/buscarProv/{id_proveedor}")
-    Proveedor buscarProv(@PathVariable("id_proveedor")String id_proveedor){
+    Proveedor buscarProv(@PathVariable("id_proveedor")Integer id_proveedor){
         return  servicio.buscarProv(id_proveedor);
     }
 
     @GetMapping ("/buscarnombreprov/{nombreProvedor}")
-    public ArrayList<Proveedor> buscarnombrepro(@PathVariable("nombreProvedor")String p){
-        return servicio.buscarnombrepro(p);
+    public ArrayList<Proveedor> buscarnombrepro(@PathVariable("nombreProvedor")String nombreProvedor){
+        return servicio.buscarnombrepro(nombreProvedor);
     }
 
     @GetMapping ("/buscartelefonoprov/{telefono}")
-    public ArrayList<Proveedor> buscartelefonopro(@PathVariable("telefono")String b){
-        return servicio.buscartelefonopro(b);
+    public ArrayList<Proveedor> buscartelefonopro(@PathVariable("telefono")String telefono){
+        return servicio.buscartelefonopro(telefono);
     }
 
     @GetMapping ("/buscaremailprov/{email}")
-    public ArrayList<Proveedor> buscaremailpro(@PathVariable("email")String e){
-        return servicio.buscaremailpro(e);
+    public ArrayList<Proveedor> buscaremailpro(@PathVariable("email")String email){
+        return servicio.buscaremailpro(email);
     }
 
     @PostMapping("/agregarProv")
@@ -50,7 +50,7 @@ public class ControladorProveedor {
     }
 
     @DeleteMapping("/eliminarProve/{id_proveedor}")
-    public String eliminarProve(@PathVariable("id_proveedor") String id_proveedor){
+    public String eliminarProve(@PathVariable("id_proveedor") Integer id_proveedor){
         return servicio.eliminarProve(id_proveedor);
     }
 }

@@ -20,7 +20,7 @@ public class ControladorRol {
     }
 
     @GetMapping ("/buscarRol/{id_rol}")
-    Rol buscarRol(@PathVariable("id_rol")String id_rol){
+    Rol buscarRol(@PathVariable("id_rol")Integer id_rol){
         return  servicio.buscarRol(id_rol);
     }
 
@@ -49,7 +49,7 @@ public class ControladorRol {
     }
 
     @DeleteMapping("/eliminarRol/{id_rol}")
-    public String eliminarRol(@PathVariable("id_rol") String id_rol){
+    public String eliminarRol(@PathVariable("id_rol") Integer id_rol){
         return servicio.eliminarRol(id_rol);
     }
 

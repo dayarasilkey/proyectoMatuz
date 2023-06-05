@@ -10,15 +10,13 @@ import java.util.Set;
 public class Productos {
 
     @Id
-    @Column(nullable = false, length= 30)
-    private String id_producto;
-    @Column(nullable = false, length= 30)
-    private String codProducto;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_producto;
     @Column(nullable = false, length= 30)
     private String nombreProd;
-    @Column(name = "precioCantidad", length = (100))
+    @Column(nullable = false, name = "precioCantidad", length = (100))
     private Float precioProducto;
-    @Column(name = "stock", length = (100))
+    @Column(nullable = false, name = "stock", length = (100))
     private int stock;
     @Column(nullable = false, length= 50)
     private String descripcion;
@@ -40,14 +38,14 @@ public class Productos {
     private Categoria categoria;
 
     @OneToMany(mappedBy = "productos", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Set<DetalleProducto> detalleproductos;
+    private Set<Suministro> suministros;
 
-    public Set<DetalleProducto> getDetalleproductos() {
-        return detalleproductos;
+    public Set<Suministro> getSuministros() {
+        return suministros;
     }
 
-    public void setDetalleproductos(Set<DetalleProducto> detalleproductos) {
-        this.detalleproductos = detalleproductos;
+    public void setSuministros(Set<Suministro> suministros) {
+        this.suministros = suministros;
     }
 
     //@ManyToOne(fetch = FetchType.LAZY, optional= false)
@@ -80,9 +78,8 @@ public class Productos {
     public Productos() {
     }
 
-    public Productos(String id_producto, String codProducto, String nombreProd, Float precioProducto, int stock, String descripcion) {
+    public Productos(Integer id_producto, String nombreProd, Float precioProducto, int stock, String descripcion) {
         this.id_producto = id_producto;
-        this.codProducto = codProducto;
         this.nombreProd = nombreProd;
         this.precioProducto = precioProducto;
         this.stock = stock;
@@ -90,20 +87,12 @@ public class Productos {
         //this.categoria = categoria;
     }
 
-    public String getId_producto() {
+    public Integer getId_producto() {
         return id_producto;
     }
 
-    public void setId_producto(String id_producto) {
+    public void setId_producto(Integer id_producto) {
         this.id_producto = id_producto;
-    }
-
-    public String getCodProducto() {
-        return codProducto;
-    }
-
-    public void setCodProducto(String codProducto) {
-        this.codProducto = codProducto;
     }
 
     public String getNombreProd() {
@@ -150,7 +139,6 @@ public class Productos {
     public String toString() {
         return "Productos{" +
                 "id_producto='" + id_producto + '\'' +
-                ", codProducto='" + codProducto + '\'' +
                 ", nombreProd='" + nombreProd + '\'' +
                 ", precioProducto=" + precioProducto +
                 ", stock=" + stock +

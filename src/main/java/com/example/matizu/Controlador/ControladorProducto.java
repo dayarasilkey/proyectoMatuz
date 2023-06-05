@@ -5,7 +5,7 @@ import com.example.matizu.Servicio.ServicioProducto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-
+@RestController
 public class ControladorProducto {
     private ServicioProducto servicio;
 
@@ -18,14 +18,9 @@ public class ControladorProducto {
         return servicio.ListarProductos();
     }
 
-    @GetMapping ("/buscaridpro/{id_entrega}")
-    Productos buscaridpro(@PathVariable("id_producto")String id_producto){
+    @GetMapping ("/buscaridpro/{id_producto}")
+    Productos buscaridpro(@PathVariable("id_producto")Integer id_producto){
         return  servicio.buscaridpro(id_producto);
-    }
-
-    @GetMapping ("/buscarCodigoPro/{codProducto}")
-    public ArrayList<Productos> buscarCodigoPro(@PathVariable("codProducto")String p){
-        return servicio.buscarCodigoPro(p);
     }
 
     @GetMapping ("/buscarNombrepro/{nombreProd}")
@@ -49,7 +44,7 @@ public class ControladorProducto {
     }
 
     @DeleteMapping("/eliminarProducto/{Id_producto}")
-    public String eliminarProducto(@PathVariable("Id_producto") String Id_producto){
+    public String eliminarProducto(@PathVariable("Id_producto") Integer Id_producto){
         return servicio.eliminarProducto(Id_producto);
     }
 }

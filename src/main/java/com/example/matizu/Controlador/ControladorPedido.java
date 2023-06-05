@@ -24,7 +24,7 @@ public class ControladorPedido {
         return serviciopedido.ListarPedido();
     }
     @GetMapping ("/buscarPed/{id_pedido}")
-    Pedido buscarRol(@PathVariable("id_pedido")String id_pedido){
+    Pedido buscarRol(@PathVariable("id_pedido")Integer id_pedido){
         return  serviciopedido.buscarPed(id_pedido);
     }
 
@@ -49,7 +49,7 @@ public class ControladorPedido {
     }
 
     @DeleteMapping("/eliminarPed/{id_pedido}")
-    public String eliminarPed(@PathVariable("id_pedido") String id_pedido){
+    public String eliminarPed(@PathVariable("id_pedido") Integer id_pedido){
         return serviciopedido.eliminarPed(id_pedido);
     }
 

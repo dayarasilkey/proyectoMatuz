@@ -11,12 +11,16 @@ import java.util.Date;
 public class Entrega {
 
     @Id
-    @Column(length = 30)
-    private String id_entrega;
-    @Column(name = "fechae")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_entrega;
+    @Column(nullable = false, name = "fechae")
     @Temporal(TemporalType.DATE)
     private Date fechae;
-    @Column(name = "pedido", length = (100))
+
+    @PrePersist
+    public void fechaactu(){
+        this.fechae=new Date(); }
+    @Column(nullable = false, name = "pedido", length = (100))
     private int numPedido;
 
     @ManyToOne(fetch = FetchType.LAZY, optional= false)
@@ -30,15 +34,11 @@ public class Entrega {
     private Pedido pedido;
 
     //Es para decirle que antes de una excepcion o una  actualizacion haga eso->
-    @PrePersist
-    public void fechaActual(){
-        this.fechae=new Date();
-    }
 
     public Entrega() {
     }
 
-    public Entrega(String id_entrega, Date fechae, int numPedido, Usuario usuario ) {
+    public Entrega(Integer id_entrega, Date fechae, int numPedido, Usuario usuario ) {
         this.id_entrega = id_entrega;
         this.fechae = fechae;
         this.numPedido = numPedido;
@@ -46,11 +46,11 @@ public class Entrega {
         //this.pedido = pedido;
     }
 
-    public String getId_entrega() {
+    public Integer getId_entrega() {
         return id_entrega;
     }
 
-    public void setId_entrega(String id_entrega) {
+    public void setId_entrega(Integer id_entrega) {
         this.id_entrega = id_entrega;
     }
 

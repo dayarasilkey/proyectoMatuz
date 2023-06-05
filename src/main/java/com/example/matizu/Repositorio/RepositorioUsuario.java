@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public interface RepositorioUsuario extends JpaRepository<Usuario, String> {
+public interface RepositorioUsuario extends JpaRepository<Usuario, Integer> {
 
     ArrayList<Usuario> findByNombre(String nombre);
     ArrayList<Usuario> findByApellido(String apellido);
@@ -16,6 +16,9 @@ public interface RepositorioUsuario extends JpaRepository<Usuario, String> {
     ArrayList<Usuario> findByTelefono(String telefono);
     ArrayList<Usuario> findByEmail(String email);
     ArrayList<Usuario> findByContraseña(String contraseña);
+
+    //boolean existsByCorreocontra(String email, String contraseña);
+
 
 
 }

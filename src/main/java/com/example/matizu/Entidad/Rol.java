@@ -1,5 +1,6 @@
 package com.example.matizu.Entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -9,8 +10,8 @@ import java.util.Set;
 @Table(name = "rol")
 public class Rol {
     @Id
-    @Column(length= 30)
-    private String id_rol;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_rol;
     @Column(nullable = false, length= 50)
     private String nombre;
     @Column(nullable = false, length= 100)
@@ -18,16 +19,12 @@ public class Rol {
     @Column(nullable = false, length= 50)
     private String estado;
 
-    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Set<Usuario> usuario;
+    @ManyToOne(fetch = FetchType.LAZY, optional= false)
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", nullable = false)
+    @JsonIgnore
+    private Usuario usuario;
 
-    public Set<Usuario> getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Set<Usuario> usuario) {
-        this.usuario = usuario;
-    }
     //@OneToMany(mappedBy = "rol", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     //private Set<Usuario> rol;
 //
@@ -39,21 +36,22 @@ public class Rol {
     //    this.rol = rol;
     //}
 
+
     public Rol() {
     }
 
-    public Rol(String id_rol, String nombre, String descripcion, String estado) {
+    public Rol(Integer id_rol, String nombre, String descripcion, String estado) {
         this.id_rol = id_rol;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
     }
 
-    public String getId_rol() {
+    public Integer getId_rol() {
         return id_rol;
     }
 
-    public void setId_rol(String id_rol) {
+    public void setId_rol(Integer id_rol) {
         this.id_rol = id_rol;
     }
 

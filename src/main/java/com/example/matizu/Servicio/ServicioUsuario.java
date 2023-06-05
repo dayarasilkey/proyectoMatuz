@@ -9,64 +9,64 @@ import java.util.ArrayList;
 @Service
 public class ServicioUsuario {
 
-    private RepositorioUsuario repositorio;
+    private RepositorioUsuario repositorioUsuario;
 
     public ServicioUsuario(RepositorioUsuario repositorio) {
-        this.repositorio = repositorio;
+        this.repositorioUsuario = repositorio;
     }
 
     public ArrayList<Usuario> ListarUsuario() {
-        return (ArrayList<Usuario>) repositorio.findAll();
+        return (ArrayList<Usuario>) repositorioUsuario.findAll();
     }
 
-    public Usuario buscarUsuario(String id_usuario) {
-        if (repositorio.findById(id_usuario).isPresent())
-            return repositorio.findById(id_usuario).get();
+    public Usuario buscarUsuario(Integer id_usuario) {
+        if (repositorioUsuario.findById(id_usuario).isPresent())
+            return repositorioUsuario.findById(id_usuario).get();
         else return null;
     }
 
     public ArrayList<Usuario> buscarNombreu(String nombre) {
-        return repositorio.findByNombre(nombre);
+        return repositorioUsuario.findByNombre(nombre);
     }
 
     public ArrayList<Usuario> buscarApellidou(String apellido) {
-        return repositorio.findByApellido(apellido);
+        return repositorioUsuario.findByApellido(apellido);
     }
 
     public ArrayList<Usuario> buscarNumdocumentou(String numdocumento) {
-        return repositorio.findByNumdocumento(numdocumento);
+        return repositorioUsuario.findByNumdocumento(numdocumento);
     }
 
     public ArrayList<Usuario> buscarDireccionu(String direccion) {
-        return repositorio.findByDireccion(direccion);
+        return repositorioUsuario.findByDireccion(direccion);
     }
 
     public ArrayList<Usuario> buscarTelefonou(String telefono) {
-        return repositorio.findByTelefono(telefono);
+        return repositorioUsuario.findByTelefono(telefono);
     }
 
     public ArrayList<Usuario> buscarEmailu(String email) {
-        return repositorio.findByEmail(email);
+        return repositorioUsuario.findByEmail(email);
     }
 
     public ArrayList<Usuario> buscarContraseñau(String contraseña) {
-        return repositorio.findByContraseña(contraseña);
+        return repositorioUsuario.findByContraseña(contraseña);
     }
 
     public String agregarUsuario(Usuario usuario) {
 
-        if (repositorio.findById(usuario.getId_usuario()).isPresent())
+        if (repositorioUsuario.findById(usuario.getId_usuario()).isPresent())
             return "El Usuario ya se encuentra registrado";
         else
-            repositorio.save(usuario);
+            repositorioUsuario.save(usuario);
         return "El Usuario se registro exitosamente.";
 
     }
 
     public String actualizarUsuario(Usuario usuario) {
 
-        if (repositorio.findById(usuario.getId_usuario()).isPresent()) {
-            repositorio.save(usuario);
+        if (repositorioUsuario.findById(usuario.getId_usuario()).isPresent()) {
+            repositorioUsuario.save(usuario);
             return "El Usuario se actualizo exitosamente.";
         } else {
             return "El Usuario no se encuentra registrado";
@@ -74,13 +74,23 @@ public class ServicioUsuario {
         }
     }
 
-    public String eliminarUsuario(String id_usuario) {
-        if (repositorio.findById(id_usuario).isPresent()) {
-            repositorio.deleteById(id_usuario);
+    public String eliminarUsuario(Integer id_usuario) {
+        if (repositorioUsuario.findById(id_usuario).isPresent()) {
+            repositorioUsuario.deleteById(id_usuario);
             return "Usuario eliminado";
         } else {
             return "El Usuario no se encuentra registrado";
         }
     }
 
+
+    //public boolean validarRegistro(Usuario usuario) {
+//
+    //    // Verificar si el correo electrónico ya existe en la base de datos
+    //    boolean correoExistente=repositorioUsuario.existsByCorreocontra(usuario.getEmail(),usuario.getContraseña());
+    //    return !correoExistente;
+//
+    //}
 }
+
+

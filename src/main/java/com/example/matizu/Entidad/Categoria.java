@@ -8,8 +8,8 @@ import java.util.Set;
 @Table(name = "categoria")
 public class Categoria {
         @Id
-        @Column(nullable = false, length= 30)
-        private String id_categoria;
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id_categoria;
         @Column(nullable = false, length= 30)
         private String nombreCat;
         @Column(nullable = false, length= 30)
@@ -23,18 +23,18 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(String id_categoria, String nombreCat, String tipoCat, String descripcionCat) {
+    public Categoria(Integer id_categoria, String nombreCat, String tipoCat, String descripcionCat) {
         this.id_categoria = id_categoria;
         this.nombreCat = nombreCat;
         this.tipoCat = tipoCat;
         this.descripcionCat = descripcionCat;
     }
 
-    public String getId_categoria() {
+    public Integer getId_categoria() {
         return id_categoria;
     }
 
-    public void setId_categoria(String id_categoria) {
+    public void setId_categoria(Integer id_categoria) {
         this.id_categoria = id_categoria;
     }
 

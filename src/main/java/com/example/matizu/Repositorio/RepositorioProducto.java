@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 @Repository
-public interface RepositorioProducto extends JpaRepository<Productos, String> {
-    ArrayList<Productos> findByCodProducto(String codProducto);
+public interface RepositorioProducto extends JpaRepository<Productos, Integer> {
     ArrayList<Productos> findByNombreProd(String nombreProd);
     ArrayList<Productos> findByDescripcion(String descripcion);
 }

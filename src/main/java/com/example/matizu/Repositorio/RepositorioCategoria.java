@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 @Repository
-public interface RepositorioCategoria extends JpaRepository<Categoria, String> {
+public interface RepositorioCategoria extends JpaRepository<Categoria, Integer> {
     ArrayList<Categoria> findByNombreCat(String nombreCat);
     ArrayList<Categoria> findByTipoCat(String tipoCat);
     ArrayList<Categoria> findByDescripcionCat(String descripcionCat);

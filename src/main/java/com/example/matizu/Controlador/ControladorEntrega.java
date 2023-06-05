@@ -20,7 +20,7 @@ public class ControladorEntrega {
     }
 
     @GetMapping ("/buscarEnt/{id_entrega}")
-    Entrega buscarEnt(@PathVariable("id_entrega")String id_entrega){
+    Entrega buscarEnt(@PathVariable("id_entrega")Integer id_entrega){
         return  servicio.buscarEnt(id_entrega);
     }
 
@@ -36,7 +36,7 @@ public class ControladorEntrega {
     }
 
     @DeleteMapping("/eliminarEnt/{id_entrega}")
-    public String eliminarEnt(@PathVariable("id_entrega") String id_entrega){
+    public String eliminarEnt(@PathVariable("id_entrega") Integer id_entrega){
         return servicio.eliminarEnt(id_entrega);
     }
 }

@@ -18,7 +18,7 @@ public class ServicioCategoria {
         return (ArrayList<Categoria>) repositorio.findAll();
     }
 
-    public Categoria buscaridcat(String id_categoria) {
+    public Categoria buscaridcat(Integer id_categoria) {
         if (repositorio.findById(id_categoria).isPresent())
             return repositorio.findById(id_categoria).get();
         else return null;
@@ -33,7 +33,7 @@ public class ServicioCategoria {
     }
 
     public ArrayList<Categoria> buscarDescripcionCat(String descripcionCat) {
-        return repositorio.findByTipoCat(descripcionCat);
+        return repositorio.findByDescripcionCat(descripcionCat);
     }
 
     public String agregarCategoria(Categoria categoria) {
@@ -58,7 +58,7 @@ public class ServicioCategoria {
         }
     }
 
-    public String eliminarCategoria(String id_categoria) {
+    public String eliminarCategoria(Integer id_categoria) {
         if (repositorio.findById(id_categoria).isPresent()) {
             repositorio.deleteById(id_categoria);
             return "La categoria ha sido eliminado";

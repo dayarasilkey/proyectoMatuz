@@ -7,15 +7,15 @@ import jakarta.persistence.*;
 @Table(name = "detallepedido")
 public class DetallePedido {
     @Id
-    @Column(nullable = false, length= 30)
-    private String idDetallePedido;
-    @Column(name = "cantidad", length = (100))
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idDetallePedido;
+    @Column(nullable = false, name = "cantidad", length = (100))
     private int cantidad;
-    @Column(name = "precioCantidad", length = (100))
+    @Column(nullable = false, name = "precioCantidad", length = (100))
     private int precioCantidad;
-    @Column(name = "descuento", length = (100))
+    @Column(nullable = false, name = "descuento", length = (100))
     private int descuento;
-    @Column(name = "numPedido", length = (100))
+    @Column(nullable = false, name = "numPedido", length = (100))
     private int numPedido;
 
     @ManyToOne(fetch = FetchType.LAZY, optional= false)
@@ -32,7 +32,7 @@ public class DetallePedido {
      public DetallePedido() {
      }
 
-    public DetallePedido(String idDetallePedido, int cantidad, int precioCantidad, int descuento, int numPedido) {
+    public DetallePedido(Integer idDetallePedido, int cantidad, int precioCantidad, int descuento, int numPedido) {
         this.idDetallePedido = idDetallePedido;
         this.cantidad = cantidad;
         this.precioCantidad = precioCantidad;
@@ -42,11 +42,11 @@ public class DetallePedido {
         // this.productos = productos;
     }
 
-    public String getIdDetallePedido() {
+    public Integer getIdDetallePedido() {
         return idDetallePedido;
     }
 
-    public void setIdDetallePedido(String idDetallePedido) {
+    public void setIdDetallePedido(Integer idDetallePedido) {
         this.idDetallePedido = idDetallePedido;
     }
 

@@ -17,7 +17,7 @@ public class ServicioDetallePedido {
         return (ArrayList<DetallePedido>) repositorio.findAll();
     }
 
-    public DetallePedido buscarDetallePed(String idDetallePedido) {
+    public DetallePedido buscarDetallePed(Integer idDetallePedido) {
         if (repositorio.findById(idDetallePedido).isPresent())
             return repositorio.findById(idDetallePedido).get();
         else return null;
@@ -45,7 +45,7 @@ public class ServicioDetallePedido {
         }
     }
 
-    public String eliminarDetallePed(String idDetallePedido) {
+    public String eliminarDetallePed(Integer idDetallePedido) {
         if (repositorio.findById(idDetallePedido).isPresent()) {
             repositorio.deleteById(idDetallePedido);
             return "El detalle del pedido ha sido eliminado";

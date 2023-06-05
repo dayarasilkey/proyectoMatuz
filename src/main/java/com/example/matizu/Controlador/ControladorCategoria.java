@@ -19,7 +19,7 @@ public class ControladorCategoria {
     }
 
     @GetMapping("/buscaridcat/{id_categoria}")
-    Categoria buscaridcat(@PathVariable("id_categoria") String id_categoria) {
+    Categoria buscaridcat(@PathVariable("id_categoria") Integer id_categoria) {
         return servicio.buscaridcat(id_categoria);
     }
 
@@ -49,7 +49,7 @@ public class ControladorCategoria {
     }
 
     @DeleteMapping("/eliminarCategoria/{id_categoria}")
-    public String eliminarCategoria(@PathVariable("id_pedido") String id_categoria) {
+    public String eliminarCategoria(@PathVariable("id_pedido") Integer id_categoria) {
         return servicio.eliminarCategoria(id_categoria);
     }
 }

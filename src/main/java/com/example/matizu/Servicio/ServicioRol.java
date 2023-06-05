@@ -17,7 +17,7 @@ public class ServicioRol {
         return (ArrayList<Rol>) repositorio.findAll();
     }
 
-    public Rol buscarRol(String id_rol) {
+    public Rol buscarRol(Integer id_rol) {
         if (repositorio.findById(id_rol).isPresent())
             return repositorio.findById(id_rol).get();
         else return null;
@@ -57,7 +57,7 @@ public class ServicioRol {
         }
     }
 
-    public String eliminarRol(String id_rol) {
+    public String eliminarRol(Integer id_rol) {
         if (repositorio.findById(id_rol).isPresent()) {
             repositorio.deleteById(id_rol);
             return "Rol eliminado";

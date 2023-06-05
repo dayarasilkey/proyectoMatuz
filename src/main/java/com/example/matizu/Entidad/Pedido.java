@@ -11,17 +11,19 @@ import java.util.Set;
 public class Pedido {
 
     @Id
-    @Column(length = 30)
-    private String id_pedido;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_pedido;
 
-    @Column(name = "fecha")
+    @Column(name = "fecha", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    @PrePersist
+    public void fechaact(){this.fecha=new Date(); }
 
-    @Column(name = "impuesto", length = (100))
+    @Column(nullable = false, name = "impuesto", length = (100))
     private int impuesto;
 
-    @Column(name = "totalped", length = (100))
+    @Column(nullable = false, name = "totalped", length = (100))
     private int totalped;
     @Column(nullable = false, length= 50)
     private String estadop;
@@ -47,15 +49,10 @@ public class Pedido {
     private Entrega entrega;
 
 
-    @PrePersist
-    public void fechaActual(){
-        this.fecha=new Date();
-    }
-
     public Pedido() {
     }
 
-    public Pedido(String id_pedido, Date fecha, int impuesto, int totalped, String estadop) {
+    public Pedido(Integer id_pedido, Date fecha, int impuesto, int totalped, String estadop) {
         this.id_pedido = id_pedido;
         this.fecha = fecha;
         this.impuesto = impuesto;
@@ -64,11 +61,11 @@ public class Pedido {
         // this.usuario = usuario;
     }
 
-    public String getId_pedido() {
+    public Integer getId_pedido() {
         return id_pedido;
     }
 
-    public void setId_pedido(String id_pedido) {
+    public void setId_pedido(Integer id_pedido) {
         this.id_pedido = id_pedido;
     }
 

@@ -8,8 +8,8 @@ import java.util.Set;
 @Table(name = "proveedor")
 public class Proveedor {
     @Id
-    @Column(nullable = false, length= 20)
-    private String id_proveedor;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_proveedor;
     @Column(nullable = false, length= 30)
     private String nombreProvedor;
     @Column(nullable = false, length= 15)
@@ -18,13 +18,13 @@ public class Proveedor {
     private String email;
 
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Set<DetalleProducto> detalleproductos;
+    private Set<Suministro> detalleproductos;
 
-    public Set<DetalleProducto> getDetalleproductos() {
+    public Set<Suministro> getDetalleproductos() {
         return detalleproductos;
     }
 
-    public void setDetalleproductos(Set<DetalleProducto> detalleproductos) {
+    public void setDetalleproductos(Set<Suministro> detalleproductos) {
         this.detalleproductos = detalleproductos;
     }
 
@@ -43,18 +43,18 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(String id_proveedor, String nombreProvedor, String telefono, String email) {
+    public Proveedor(Integer id_proveedor, String nombreProvedor, String telefono, String email) {
         this.id_proveedor = id_proveedor;
         this.nombreProvedor = nombreProvedor;
         this.telefono = telefono;
         this.email = email;
     }
 
-    public String getId_proveedor() {
+    public Integer getId_proveedor() {
         return id_proveedor;
     }
 
-    public void setId_proveedor(String id_proveedor) {
+    public void setId_proveedor(Integer id_proveedor) {
         this.id_proveedor = id_proveedor;
     }
 

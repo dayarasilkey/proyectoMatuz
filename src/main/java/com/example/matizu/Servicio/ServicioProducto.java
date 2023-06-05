@@ -17,15 +17,12 @@ public class ServicioProducto {
         return (ArrayList<Productos>) repositorio.findAll();
     }
 
-    public Productos buscaridpro(String id_producto) {
+    public Productos buscaridpro(Integer id_producto) {
         if (repositorio.findById(id_producto).isPresent())
             return repositorio.findById(id_producto).get();
         else return null;
     }
 
-    public ArrayList<Productos> buscarCodigoPro(String codProducto) {
-        return repositorio.findByCodProducto(codProducto);
-    }
 
     public ArrayList<Productos> buscarNombrepro(String nombreProd) {
         return repositorio.findByNombreProd(nombreProd);
@@ -56,7 +53,7 @@ public class ServicioProducto {
         }
     }
 
-    public String eliminarProducto(String Id_producto) {
+    public String eliminarProducto(Integer Id_producto) {
         if (repositorio.findById(Id_producto).isPresent()) {
             repositorio.deleteById(Id_producto);
             return "El producto del pedido ha sido eliminado";

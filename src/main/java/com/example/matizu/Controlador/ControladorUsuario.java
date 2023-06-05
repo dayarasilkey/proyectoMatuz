@@ -1,7 +1,9 @@
 package com.example.matizu.Controlador;
 
 import com.example.matizu.Entidad.Usuario;
+import com.example.matizu.Repositorio.RepositorioUsuario;
 import com.example.matizu.Servicio.ServicioUsuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 @RestController
 public class ControladorUsuario {
 
+    @Autowired
     private ServicioUsuario servicio;
 
     public ControladorUsuario(ServicioUsuario servicio) {
@@ -21,7 +24,7 @@ public class ControladorUsuario {
     }
 
     @GetMapping ("/buscarUsuario/{id_usuario}")
-    Usuario buscarUsuario(@PathVariable("id_usuario")String id_usuario){
+    Usuario buscarUsuario(@PathVariable("id_usuario")Integer id_usuario){
         return  servicio.buscarUsuario(id_usuario);
     }
 
@@ -71,9 +74,19 @@ public class ControladorUsuario {
     }
 
     @DeleteMapping("/eliminarUsuario/{id_usuario}")
-    public String eliminarUsuario(@PathVariable("id_usuario") String id_usuario){
+    public String eliminarUsuario(@PathVariable("id_usuario") Integer id_usuario){
         return servicio.eliminarUsuario(id_usuario);
     }
-
+//
+    //@PostMapping("/validarregistro")
+    //public String registroUsuario(@RequestBody Usuario usuario) {
+    //    if (!servicio.validarRegistro(usuario)) {
+    //        return "El correo electrónico y contraseña ya están registrados";
+    //    }
+    //    // Guardar el usuario en la base de datos utilizando el repositorio
+    //    repo.save(usuario);
+    //    return "Registro exitoso";
+    //}
+//
 
 }

@@ -18,7 +18,7 @@ public class ServicioProveedor {
         return (ArrayList<Proveedor>) repositorio.findAll();
     }
 
-    public Proveedor buscarProv(String id_proveedor) {
+    public Proveedor buscarProv(Integer id_proveedor) {
         if (repositorio.findById(id_proveedor).isPresent())
             return repositorio.findById(id_proveedor).get();
         else return null;
@@ -58,7 +58,7 @@ public class ServicioProveedor {
         }
     }
 
-    public String eliminarProve(String id_proveedor) {
+    public String eliminarProve(Integer id_proveedor) {
         if (repositorio.findById(id_proveedor).isPresent()) {
             repositorio.deleteById(id_proveedor);
             return "Proveedor eliminado";

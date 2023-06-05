@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 @Repository
-public interface RepositorioRol extends JpaRepository<Rol, String> {
+public interface RepositorioRol extends JpaRepository<Rol, Integer> {
 
     ArrayList<Rol> findByNombre(String nombre);
     ArrayList<Rol> findByDescripcion(String descripcion);

@@ -20,7 +20,7 @@ public class ControladorDetallePedido {
     }
 
     @GetMapping ("/buscarDetallePed/{idDetallePedido}")
-    DetallePedido buscarDetallePed(@PathVariable("idDetallePedido")String idDetallePedido){
+    DetallePedido buscarDetallePed(@PathVariable("idDetallePedido")Integer idDetallePedido){
         return  servicio.buscarDetallePed(idDetallePedido);
     }
 
@@ -35,7 +35,7 @@ public class ControladorDetallePedido {
     }
 
     @DeleteMapping("/eliminarDetallePed/{idDetallePedido}")
-    public String eliminarDetallePed(@PathVariable("idDetallePedido") String idDetallePedido){
+    public String eliminarDetallePed(@PathVariable("idDetallePedido") Integer idDetallePedido){
         return servicio.eliminarDetallePed(idDetallePedido);
     }
 }

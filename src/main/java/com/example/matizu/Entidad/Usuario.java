@@ -9,8 +9,8 @@ import java.util.Set;
 @Table(name = "usuario")
 public class Usuario {
     @Id
-    @Column(length = 30)
-    private String id_usuario;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_usuario;
     @Column(nullable = false, length= 50)
     private String nombre;
     @Column(nullable = false, length= 50)
@@ -21,7 +21,7 @@ public class Usuario {
     private String direccion;
     @Column(nullable = false, length= 15)
     private String telefono;
-    @Column(nullable = false, length= 50, unique = true)
+    @Column(nullable = false, length= 50, unique  = true)
     private String email;
     @Column(nullable = false, length= 20)
     private String contraseña;
@@ -49,20 +49,28 @@ public class Usuario {
         this.pedido = pedido;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, optional= false)
-    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol", nullable = false)
-    @JsonIgnore
-    private Rol rol;
+
 
 //@ManyToOne(fetch = FetchType.LAZY, optional= false)
     //@JoinColumn(name = "id_rol", referencedColumnName = "id_rol", nullable = false)
     //@JsonIgnore
     //private Rol rol;
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Set<Rol> rol;
+
+    public Set<Rol> getRol() {
+        return rol;
+    }
+
+    public void setRol(Set<Rol> rol) {
+        this.rol = rol;
+    }
+
     public Usuario() {
     }
 
-    public Usuario(String id_usuario, String nombre, String apellido, String numdocumento, String direccion, String telefono, String email, String contraseña) {
+    public Usuario(Integer id_usuario, String nombre, String apellido, String numdocumento, String direccion, String telefono, String email, String contraseña) {
         this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -74,11 +82,11 @@ public class Usuario {
         //this.rol = rol;
     }
 
-    public String getId_usuario() {
+    public Integer getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(String id_usuario) {
+    public void setId_usuario(Integer id_usuario) {
         this.id_usuario = id_usuario;
     }
 

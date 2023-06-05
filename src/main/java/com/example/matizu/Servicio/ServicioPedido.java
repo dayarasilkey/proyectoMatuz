@@ -20,7 +20,7 @@ public class ServicioPedido {
         return (ArrayList<Pedido>) repositorio.findAll();
     }
 
-    public Pedido buscarPed(String id_pedido) {
+    public Pedido buscarPed(Integer id_pedido) {
         if (repositorio.findById(id_pedido).isPresent())
             return repositorio.findById(id_pedido).get();
         else return null;
@@ -56,7 +56,7 @@ public class ServicioPedido {
         }
     }
 
-    public String eliminarPed(String id_pedido) {
+    public String eliminarPed(Integer id_pedido) {
         if (repositorio.findById(id_pedido).isPresent()) {
             repositorio.deleteById(id_pedido);
             return "Pedido eliminado";

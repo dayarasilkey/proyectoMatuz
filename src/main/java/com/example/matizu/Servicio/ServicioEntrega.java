@@ -20,7 +20,7 @@ public class ServicioEntrega {
         return (ArrayList<Entrega>) repositorio.findAll();
     }
 
-    public Entrega buscarEnt(String id_entrega) {
+    public Entrega buscarEnt(Integer id_entrega) {
         if (repositorio.findById(id_entrega).isPresent())
             return repositorio.findById(id_entrega).get();
         else return null;
@@ -52,7 +52,7 @@ public class ServicioEntrega {
         }
     }
 
-    public String eliminarEnt(String id_entrega) {
+    public String eliminarEnt(Integer id_entrega) {
         if (repositorio.findById(id_entrega).isPresent()) {
             repositorio.deleteById(id_entrega);
             return "Entrega eliminada";
