@@ -56,16 +56,10 @@ public class Usuario {
     //@JsonIgnore
     //private Rol rol;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Set<Rol> rol;
-
-    public Set<Rol> getRol() {
-        return rol;
-    }
-
-    public void setRol(Set<Rol> rol) {
-        this.rol = rol;
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional= false)
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol", nullable = false)
+    @JsonIgnore
+    private Rol rol;
 
     public Usuario() {
     }

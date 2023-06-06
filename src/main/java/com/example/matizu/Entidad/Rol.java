@@ -19,12 +19,16 @@ public class Rol {
     @Column(nullable = false, length= 50)
     private String estado;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional= false)
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", nullable = false)
-    @JsonIgnore
-    private Usuario usuario;
+    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Set<Usuario> usuario;
 
+    public Set<Usuario> getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Set<Usuario> usuario) {
+        this.usuario = usuario;
+    }
     //@OneToMany(mappedBy = "rol", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     //private Set<Usuario> rol;
 //
